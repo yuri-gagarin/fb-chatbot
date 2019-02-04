@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./index.js"
+    "start": "npm run build && node ./build/index.js",
+    "startDev": "nodemon --exec babel-node index.js",
+    "clean": "rm -rf build && mkdir build",
+    "build": "npm run clean && npm run build-server",
+    "build-server": "babel -d ./build ./ -s --ignore node_modules",
+    "serve": "node build/index.js"
   },
   "author": "yuri-gagarin",
   "license": "MIT",
@@ -14,6 +19,13 @@
     "express": "^4.16.4"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.7.0"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "nodemon": "^1.18.9"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }
