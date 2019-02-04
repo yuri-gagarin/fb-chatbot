@@ -1,0 +1,18 @@
+{
+  "name": "chatbot-facebook",
+  "version": "1.0.0",
+  "description": "chatbot for facebook",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yuri-gagarin",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0"
+  }
+}
