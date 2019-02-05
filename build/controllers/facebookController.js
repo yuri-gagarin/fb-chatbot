@@ -38,7 +38,7 @@ var _default = {
 
       if (event.message && sender && event.message.text) {
         var message = event.message.text;
-        var downcasedMessage = message.downCase.split(" ");
+        var downcasedMessage = message.toLowerCase().split(" ");
 
         if (downcasedMessage.includes('yuriy')) {
           (0, _sendMessage2.default)(sender, "Go to hell Yuriy!");

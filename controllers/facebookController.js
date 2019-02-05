@@ -30,7 +30,7 @@ export default {
 
       if (event.message && sender && event.message.text) {
         let message = event.message.text;
-        let downcasedMessage = message.downCase.split(" ");
+        let downcasedMessage = message.toLowerCase().split(" ");
 
         if(downcasedMessage.includes('yuriy')) {
           sendMessage(sender, "Go to hell Yuriy!");
