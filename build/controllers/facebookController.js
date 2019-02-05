@@ -38,7 +38,13 @@ var _default = {
 
       if (event.message && sender && event.message.text) {
         var message = event.message.text;
-        (0, _sendMessage2.default)(sender, "Parrot responding: ".concat(message));
+        var downcasedMessage = message.downCase.split(" ");
+
+        if (downcasedMessage.includes('yuriy')) {
+          (0, _sendMessage2.default)(sender, "Go to hell Yuriy!");
+        } else {
+          (0, _sendMessage2.default)(sender, "Parrot responding: ".concat(message));
+        }
       }
     }
   }

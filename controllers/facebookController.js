@@ -30,7 +30,14 @@ export default {
 
       if (event.message && sender && event.message.text) {
         let message = event.message.text;
-        sendMessage(sender, `Parrot responding: ${message}`);
+        let downcasedMessage = message.downCase.split(" ");
+
+        if(downcasedMessage.includes('yuriy')) {
+          sendMessage(sender, "Go to hell Yuriy!");
+        }
+        else {
+          sendMessage(sender, `Parrot responding: ${message}`);
+        }
       }
     }
   } 
