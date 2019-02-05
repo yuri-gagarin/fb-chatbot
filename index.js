@@ -1,5 +1,7 @@
 import express from 'express';
 const app = express();
+import dotenv from "dotenv";
+dotenv.config();
 const expressRouter = express.Router({caseSensitive: false});
 import routes from "./routes/routes.js";
 
@@ -19,5 +21,5 @@ app.use(expressRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
-  console.log(expressRouter)
+  console.log(process.env.TEST);
 });
