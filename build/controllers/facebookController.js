@@ -4,6 +4,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _sendMessage2 = _interopRequireDefault(require("../helpers/sendMessage.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var _default = {
   confirmWebhook: function confirmWebhook(request, response) {
     var VERIFY_TOKEN = "y-apparel";
@@ -28,11 +33,12 @@ var _default = {
       var event = all_messages[i];
       response.status(200);
       response.set("Content-Type: application/json");
-      response.send(event); //let sender = event.sender.id;
+      response.send(event);
+      var sender = event.sender.id;
 
-      if (event) {
-        // console.log(sender);
-        console.log(event.message);
+      if (event.message && sender && event.message.text) {
+        var message = event.message.text;
+        (0, _sendMessage2.default)(sender, "Parrot responding: ".concat(message));
       }
     }
   }

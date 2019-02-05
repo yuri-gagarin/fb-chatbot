@@ -1,3 +1,5 @@
+import sendMessage from "../helpers/sendMessage.js";
+
 export default {
   confirmWebhook: (request, response) => {
     let VERIFY_TOKEN = "y-apparel";
@@ -24,11 +26,11 @@ export default {
       response.status(200);
       response.set("Content-Type: application/json");
       response.send(event);
-      //let sender = event.sender.id;
+      let sender = event.sender.id;
 
-      if (event) {
-       // console.log(sender);
-        console.log(event.message);
+      if (event.message && sender && event.message.text) {
+        let message = event.message.text;
+        sendMessage(sender, `Parrot responding: ${message}`);
       }
     }
   } 
