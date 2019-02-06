@@ -1,4 +1,4 @@
-import sendMessage from "../helpers/sendMessage.js";
+import sendMessage, {sendMessageAsync} from "../helpers/sendMessage.js";
 
 export default {
   confirmWebhook: (request, response) => {
@@ -33,10 +33,10 @@ export default {
         let downcasedMessage = message.toLowerCase().split(" ");
 
         if(downcasedMessage.includes('yuriy')) {
-          sendMessage(sender, "Go to hell Yuriy!");
+          sendMessageAsync(sender, "Go to hell Yuriy!");
         }
         else {
-          sendMessage(sender, `Parrot responding: ${message}`);
+          sendMessageAsync(sender, `Parrot responding: ${message}`);
         }
       }
     }

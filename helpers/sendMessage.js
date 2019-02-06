@@ -1,6 +1,7 @@
 import request from "request";
+import axios from "axios";
 
-export default function sendMessage(recipient, message) {
+export function sendMessage(recipient, message) {
   
   let requestOptions = {
     url: "https://graph.facebook.com/v2.6/me/messages",
@@ -24,4 +25,28 @@ export default function sendMessage(recipient, message) {
 
   request(requestOptions, requestCallback);
 
+}
+
+export function sendMessageAsync(recipient, message) {
+  
+  let requestOptions = {
+    method: "POST",
+    url: "https://graph.facebook.com/v2.6/me/messages",
+    params: {
+      access_token: process.env.FB_ACCESS_TOKEN
+    },
+    data: {
+      messaging_type: "RESPONSE",
+      recipient: {id: recipient},
+      message: {text: message}
+    }
+  };
+
+  axios(requestOptions)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error)
+    });s
 }

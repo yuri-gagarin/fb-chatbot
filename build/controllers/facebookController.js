@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _sendMessage2 = _interopRequireDefault(require("../helpers/sendMessage.js"));
+var _sendMessage = _interopRequireWildcard(require("../helpers/sendMessage.js"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 var _default = {
   confirmWebhook: function confirmWebhook(request, response) {
@@ -41,9 +41,9 @@ var _default = {
         var downcasedMessage = message.toLowerCase().split(" ");
 
         if (downcasedMessage.includes('yuriy')) {
-          (0, _sendMessage2.default)(sender, "Go to hell Yuriy!");
+          (0, _sendMessage.sendMessageAsync)(sender, "Go to hell Yuriy!");
         } else {
-          (0, _sendMessage2.default)(sender, "Parrot responding: ".concat(message));
+          (0, _sendMessage.sendMessageAsync)(sender, "Parrot responding: ".concat(message));
         }
       }
     }
