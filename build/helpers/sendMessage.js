@@ -10,6 +10,8 @@ var _request = _interopRequireDefault(require("request"));
 
 var _axios = _interopRequireDefault(require("axios"));
 
+var _config = _interopRequireDefault(require("../config/config.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function sendMessage(recipient, message) {
@@ -47,7 +49,7 @@ function sendMessageAsync(recipient, message) {
     method: "POST",
     url: "https://graph.facebook.com/v2.6/me/messages",
     params: {
-      access_token: process.env.FB_ACCESS_TOKEN
+      access_token: _config.default.fbTOKEN
     },
     data: {
       messaging_type: "RESPONSE",

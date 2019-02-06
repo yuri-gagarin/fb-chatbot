@@ -1,5 +1,6 @@
 import request from "request";
 import axios from "axios";
+import config from "../config/config.js";
 
 export function sendMessage(recipient, message) {
   
@@ -33,7 +34,7 @@ export function sendMessageAsync(recipient, message) {
     method: "POST",
     url: "https://graph.facebook.com/v2.6/me/messages",
     params: {
-      access_token: process.env.FB_ACCESS_TOKEN
+      access_token: config.fbTOKEN
     },
     data: {
       messaging_type: "RESPONSE",
