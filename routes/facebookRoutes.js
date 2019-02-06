@@ -8,6 +8,6 @@ export default function(router) {
 
   router
     .route("/webhook")
-    .post(facebookController.sendMessage);
+    .post(facebookController.handleMessage);
     
 }

@@ -17,7 +17,11 @@ export default {
       }
     }
   },
-  sendMessage: (request, response) => {
+  checkNLP: (nlp, name) => {
+    return nlp && nlp.entities[name] && nlp.entities[name][0];
+  },
+
+  handleMessage: (request, response) => {
     let all_messages = request.body.entry[0].messaging;
     let messages_length = all_messages.length;
     
@@ -36,7 +40,13 @@ export default {
           sendMessageAsync(sender, "Go to hell Yuriy!");
         }
         else {
-          sendMessageAsync(sender, `Parrot responding: ${message}`);
+          const greeting = this.checkNLP(event.message, "greetings");
+          if (greeting && greeting.confidence > 0.8) {
+            sendMessageAsync(sender, "Hello There. How can I help you?");
+          }
+          else {
+            sendMessageAsync(sender, "Sorry couldn't understand you");
+          }
         }
       }
     }
